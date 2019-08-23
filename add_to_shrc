@@ -1,0 +1,36 @@
+if [ ! -d ~/custom_scripts ]; then
+mkdir ~/custom_scripts
+fi
+if [ ! -f ~/custom_scripts/custom_rm ] ; then
+{
+	echo '# made by ede-ram
+		if [ ! -d ~/trash ]; then
+			mkdir ~/trash
+				fi
+				for file in "$@" ; do
+					if [ ! -e $file ] ; then
+					{
+						/bin/echo $file" inexistant"
+							continue
+					}
+	fi
+		if [ -e ~/trash/$file ] ; then
+		{
+			while true; do
+				echo "Do you want to overwrite ~/trash/$file [y/n]"
+					read -p "" yn
+					case $yn in
+					[Yy]* ) break ;;
+			[Nn]* ) continue 2 ;;
+			* ) echo "Please answer yes or no.";;
+			esac
+				done
+		}
+	fi
+		/bin/mv $file ~/trash
+		/bin/echo $file" moved to trash"
+		done' >~/custom_scripts/custom_rm
+}
+	fi
+rm()
+	sh ~/custom_scripts/custom_rm $@
