@@ -1,11 +1,11 @@
-if [ ! -d ~/custom_scripts ]; then
-mkdir ~/custom_scripts
+if [ ! -d $HOME/custom_scripts ]; then
+mkdir $HOME/custom_scripts
 fi
-if [ ! -f ~/custom_scripts/custom_rm ] ; then
+if [ ! -f $HOME/custom_scripts/custom_rm ] ; then
 {
 	echo '# made by ede-ram
-		if [ ! -d ~/trash ]; then
-			mkdir ~/trash
+		if [ ! -d $HOME/trash ]; then
+			mkdir $HOME/trash
 				fi
 				for file in "$@" ; do
 					if [ ! -e $file ] ; then
@@ -14,10 +14,10 @@ if [ ! -f ~/custom_scripts/custom_rm ] ; then
 							continue
 					}
 	fi
-		if [ -e ~/trash/$file ] ; then
+		if [ -e $HOME/trash/$file ] ; then
 		{
 			while true; do
-				echo "Do you want to overwrite ~/trash/$file [y/n]"
+				echo "Do you want to overwrite $HOME/trash/$file [y/n]"
 					read -p "" yn
 					case $yn in
 					[Yy]* ) break ;;
@@ -27,10 +27,10 @@ if [ ! -f ~/custom_scripts/custom_rm ] ; then
 				done
 		}
 	fi
-		/bin/mv $file ~/trash
+		/bin/mv $file $HOME/trash
 		/bin/echo $file" moved to trash"
-		done' >~/custom_scripts/custom_rm
+		done' >$HOME/custom_scripts/custom_rm
 }
 	fi
 rm()
-	sh ~/custom_scripts/custom_rm $@
+	sh $HOME/custom_scripts/custom_rm $@
